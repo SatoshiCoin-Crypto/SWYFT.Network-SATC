@@ -1,0 +1,1 @@
+You can find all information about this project at [satoshicoin.world](https://satoshicoin.world)

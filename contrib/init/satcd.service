@@ -1,0 +1,26 @@
+[Unit]
+Description=SATC's distributed currency daemon
+After=network.target
+
+[Service]
+User=satc
+Group=satc
+
+Type=forking
+PIDFile=/var/lib/satcd/satcd.pid
+
+ExecStart=/usr/bin/satcd -daemon -pid=/var/lib/satcd/satcd.pid \
+          -conf=/etc/satc/satc.conf -datadir=/var/lib/satcd
+
+ExecStop=-/usr/bin/satc-cli -conf=/etc/satc/satc.conf \
+         -datadir=/var/lib/satcd stop
+
+Restart=always
+PrivateTmp=true
+TimeoutStopSec=60s
+TimeoutStartSec=2s
+StartLimitInterval=120s
+StartLimitBurst=5
+
+[Install]
+WantedBy=multi-user.target

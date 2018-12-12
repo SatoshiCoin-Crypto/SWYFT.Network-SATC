@@ -1,0 +1,26 @@
+# /etc/conf.d/satcd: config file for /etc/init.d/satcd
+
+# Config file location
+#BITCOIND_CONFIGFILE="/etc/satc/satc.conf"
+
+# What directory to write pidfile to?  (created and owned by $BITCOIND_USER)
+#BITCOIND_PIDDIR="/var/run/satcd"
+
+# What filename to give the pidfile
+#BITCOIND_PIDFILE="${BITCOIND_PIDDIR}/satcd.pid"
+
+# Where to write satcd data (be mindful that the blockchain is large)
+#BITCOIND_DATADIR="/var/lib/satcd"
+
+# User and group to own satcd process
+#BITCOIND_USER="satc"
+#BITCOIND_GROUP="satc"
+
+# Path to satcd executable
+#BITCOIND_BIN="/usr/bin/satcd"
+
+# Nice value to run satcd under
+#BITCOIND_NICE=0
+
+# Additional options (avoid -conf and -datadir, use flags above)
+BITCOIND_OPTS=""

@@ -1,0 +1,29 @@
+<!DOCTYPE RCC><RCC version="1.0">
+    <qresource prefix="/translations">
+        <file alias="bg">locale/satc_bg.qm</file>
+        <file alias="ca">locale/satc_ca.qm</file>
+        <file alias="cs">locale/satc_cs.qm</file>
+        <file alias="da">locale/satc_da.qm</file>
+        <file alias="de">locale/satc_de.qm</file>
+        <file alias="en">locale/satc_en.qm</file>
+        <file alias="en_US">locale/satc_en_US.qm</file>
+        <file alias="es">locale/satc_es.qm</file>
+        <file alias="fi">locale/satc_fi.qm</file>
+        <file alias="fr_FR">locale/satc_fr_FR.qm</file>
+        <file alias="it">locale/satc_it.qm</file>
+        <file alias="ja">locale/satc_ja.qm</file>
+        <file alias="ko_KR">locale/satc_ko_KR.qm</file>
+        <file alias="nl">locale/satc_nl.qm</file>
+        <file alias="pl">locale/satc_pl.qm</file>
+        <file alias="pt">locale/satc_pt.qm</file>
+        <file alias="pt_BR">locale/satc_pt_BR.qm</file>
+        <file alias="ro_RO">locale/satc_ro_RO.qm</file>
+        <file alias="ru">locale/satc_ru.qm</file>
+        <file alias="sk">locale/satc_sk.qm</file>
+        <file alias="sv">locale/satc_sv.qm</file>
+        <file alias="tr">locale/satc_tr.qm</file>
+        <file alias="uk">locale/satc_uk.qm</file>
+        <file alias="zh_CN">locale/satc_zh_CN.qm</file>
+        <file alias="zh_TW">locale/satc_zh_TW.qm</file>
+    </qresource>
+</RCC>

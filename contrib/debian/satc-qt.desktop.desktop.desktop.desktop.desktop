@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=SATC
+Comment=SATC P2P Cryptocurrency
+Exec=satc-qt %u
+Terminal=false
+Type=Application
+Icon=satc128
+MimeType=x-scheme-handler/satc;
+Categories=Office;Finance;
+Name[ru]=satc-qt.desktop.desktop.desktop.desktop
