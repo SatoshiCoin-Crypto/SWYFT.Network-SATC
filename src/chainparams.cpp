@@ -103,7 +103,7 @@ public:
         bnProofOfWorkLimit = ~uint256(0) >> 20;
         bnStartWork = ~uint256(0) >> 20;
 
-        nMaxReorganizationDepth = 100;
+        nMaxReorganizationDepth = 300;
         nEnforceBlockUpgradeMajority = 750;
         nRejectBlockOutdatedMajority = 950;
         nToCheckBlockUpgradeMajority = 1000;
@@ -113,9 +113,10 @@ public:
         nMasternodeCountDrift = 3;
         nMaxMoneyOut = 35000000 * COIN;
 
-        nStartMasternodePaymentsBlock = 5001;
-
         /** Height or Time Based Activations **/
+
+	      nStartMasternodePaymentsBlock = 5001;
+	      nForkTimestamp = 1548547201; // 27 January 2019, 0:00:01 GMT
         nLastPOWBlock = 250;
         nModifierUpdateBlock = std::numeric_limits<decltype(nModifierUpdateBlock)>::max();
 

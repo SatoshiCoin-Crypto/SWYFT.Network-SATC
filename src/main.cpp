@@ -1626,10 +1626,10 @@ CAmount GetBlockValue(int nHeight, uint32_t nTime)
             return 10 * COIN;
     }
 
-    if (nHeight == 0) {
+    if (nHeight == 1) {
         nSubsidy = 10000000 * COIN;
     }
-    else if (nHeight <= 5000 && nHeight > 0) {
+    else if (nHeight <= 5000 && nHeight > 1) {
         nSubsidy = 3 * COIN;
     }
     else if (nHeight <= 50000 && nHeight >= 5001) {
@@ -2198,7 +2198,7 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
     LogPrint("bench", "      - Connect %u transactions: %.2fms (%.3fms/tx, %.3fms/txin) [%.2fs]\n", (unsigned)block.vtx.size(), 0.001 * (nTime1 - nTimeStart), 0.001 * (nTime1 - nTimeStart) / block.vtx.size(), nInputs <= 1 ? 0 : 0.001 * (nTime1 - nTimeStart) / (nInputs - 1), nTimeConnect * 0.000001);
 
     //PoW phase redistributed fees to miner. PoS stage destroys fees.
-    CAmount nExpectedMint = GetBlockValue(pindex->pprev->nHeight, block.nTime);
+    CAmount nExpectedMint = GetBlockValue(pindex->pprev->nHeight + 1, block.nTime);
     if (block.IsProofOfWork())
         nExpectedMint += nFees;
 
@@ -5369,9 +5369,11 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
 int ActiveProtocol()
 {
 //    if (IsSporkActive(SPORK_X_NEW_PROTOCOL_ENFORCEMENT_X))
-//            return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT;
+      if(Params().ForkTimestamp() < GetAdjustedTime())
 
-    return MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT;
+      return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT;
+
+      return MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT;
 }
 
 // requires LOCK(cs_vRecvMsg)
