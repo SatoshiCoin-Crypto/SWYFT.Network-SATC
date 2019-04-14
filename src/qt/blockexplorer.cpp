@@ -471,8 +471,8 @@ void BlockExplorer::showEvent(QShowEvent*)
         updateNavButtons();
 
         if (!GetBoolArg("-txindex", false)) {
-            QString Warning = tr("Not all transactions will be shown. To view all transactions you need to set txindex=1 in the configuration file (satc.conf).");
-            QMessageBox::warning(this, "SatoshiCoin Blockchain Explorer", Warning, QMessageBox::Ok);
+            QString Warning = tr("Not all transactions will be shown. To view all transactions you need to set txindex=1 in the configuration file (swyft.conf).");
+            QMessageBox::warning(this, "SWYFT.Network Blockchain Explorer", Warning, QMessageBox::Ok);
         }
     }
 }
@@ -548,7 +548,7 @@ void BlockExplorer::setBlock(CBlockIndex* pBlock)
 
 void BlockExplorer::setContent(const std::string& Content)
 {
-    QString CSS = "body {font-size:12px; color:#f8f6f6; bgcolor:#d9c681;}\n a, span { font-family: monospace; }\n span.addr {color:#d9c681; font-weight: bold;}\n table tr td {padding: 3px; border: 1px solid black; background-color: #d9c681;}\n td.d0 {font-weight: bold; color:#f8f6f6;}\n h2, h3 { white-space:nowrap; color:#d9c681;}\n a { color:#d9c681; text-decoration:none; }\n a.nav {color:#d9c681;}\n";
+    QString CSS = "body {font-size:12px; color:#f8f6f6; bgcolor:#aaa4a4;}\n a, span { font-family: monospace; }\n span.addr {color:#aaa4a4; font-weight: bold;}\n table tr td {padding: 3px; border: 1px solid black; background-color: #aaa4a4;}\n td.d0 {font-weight: bold; color:#f8f6f6;}\n h2, h3 { white-space:nowrap; color:#aaa4a4;}\n a { color:#aaa4a4; text-decoration:none; }\n a.nav {color:#aaa4a4;}\n";
     QString FullContent = "<html><head><style type=\"text/css\">" + CSS + "</style></head>" + "<body>" + Content.c_str() + "</body></html>";
     // printf(FullContent.toUtf8());
 

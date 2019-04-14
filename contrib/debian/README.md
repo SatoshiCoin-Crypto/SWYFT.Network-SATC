@@ -1,20 +1,20 @@
 
 Debian
 ====================
-This directory contains files used to package satcd/satc-qt
-for Debian-based Linux systems. If you compile satcd/satc-qt yourself, there are some useful files here.
+This directory contains files used to package swyftd/swyft-qt
+for Debian-based Linux systems. If you compile swyftd/swyft-qt yourself, there are some useful files here.
 
-## satc: URI support ##
+## swyft: URI support ##
 
 
-satc-qt.desktop  (Gnome / Open Desktop)
+swyft-qt.desktop  (Gnome / Open Desktop)
 To install:
 
-	sudo desktop-file-install satc-qt.desktop
+	sudo desktop-file-install swyft-qt.desktop
 	sudo update-desktop-database
 
 If you build yourself, you will either need to modify the paths in
-the .desktop file or copy or symlink your satcqt binary to `/usr/bin`
-and the `../../share/pixmaps/satc128.png` to `/usr/share/pixmaps`
+the .desktop file or copy or symlink your swyftqt binary to `/usr/bin`
+and the `../../share/pixmaps/swyft128.png` to `/usr/share/pixmaps`
 
-satc-qt.protocol (KDE)
+swyft-qt.protocol (KDE)

@@ -9,8 +9,8 @@
 #include <vector>
 
 /**
- * CBaseChainParams defines the base parameters (shared between satc-cli and satcd)
- * of a given instance of the SATC system.
+ * CBaseChainParams defines the base parameters (shared between swyft-cli and swyftd)
+ * of a given instance of the SWYFT.Network system.
  */
 class CBaseChainParams
 {

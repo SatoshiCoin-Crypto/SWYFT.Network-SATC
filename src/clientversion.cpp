@@ -10,10 +10,10 @@
 
 /**
  * Name of client reported in the 'version' message. Report the same name
- * for both satcd and satc-qt, to make it harder for attackers to
+ * for both swyftd and swyft-qt, to make it harder for attackers to
  * target servers or GUI users specifically.
  */
-const std::string CLIENT_NAME("SatoshiCoin Wallet");
+const std::string CLIENT_NAME("SWYFT.Network Wallet");
 
 /**
  * Client version number

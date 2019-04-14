@@ -2,7 +2,7 @@
 // Copyright (c) 2014-2015 The Dash developers
 // Copyright (c) 2015-2017 The PIVX developers
 // Copyright (c) 2017-2018 The XDNA Core developers
-// Copyright (c) 2018 The SatoshiCoin Core developers
+// Copyright (c) 2018-2019 The SWYFT.Network developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -122,9 +122,9 @@ this->setStyleSheet(GUIUtil::loadStyleSheet());
 
 GUIUtil::restoreWindowGeometry("nWindow", QSize(1065, 670), this);
 //this->setFixedSize(1065,670);
-QFontDatabase::addApplicationFont(":/fonts/satc_font");
+QFontDatabase::addApplicationFont(":/fonts/swyft_font");
 
-QString windowTitle = tr("SatoshiCoin Wallet") + " - ";
+QString windowTitle = tr("SWYFT.Network Wallet") + " - ";
 #ifdef ENABLE_WALLET
     /* if compiled with wallet support, -disablewallet can still disable the wallet */
     enableWallet = !GetBoolArg("-disablewallet", false);
@@ -320,7 +320,7 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
     tabGroup->addAction(overviewAction);
 
     sendCoinsAction = new QAction(QIcon(":/icons/send"), "", this);
-    sendCoinsAction->setStatusTip(tr("Send coins to a SatoshiCoin address"));
+    sendCoinsAction->setStatusTip(tr("Send coins to a SWYFT.Network address"));
     sendCoinsAction->setToolTip(sendCoinsAction->statusTip());
     sendCoinsAction->setCheckable(true);
 #ifdef Q_OS_MAC
@@ -331,7 +331,7 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
     tabGroup->addAction(sendCoinsAction);
 
     receiveCoinsAction = new QAction(QIcon(":/icons/receiving_addresses"), "", this);
-    receiveCoinsAction->setStatusTip(tr("Request payments (generates QR codes and SATC: URIs)"));
+    receiveCoinsAction->setStatusTip(tr("Request payments (generates QR codes and SWYFT.Network: URIs)"));
     receiveCoinsAction->setToolTip(receiveCoinsAction->statusTip());
     receiveCoinsAction->setCheckable(true);
 #ifdef Q_OS_MAC
@@ -400,8 +400,8 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
     quitAction->setStatusTip(tr("Quit application"));
     quitAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_Q));
     quitAction->setMenuRole(QAction::QuitRole);
-    aboutAction = new QAction(networkStyle->getAppIcon(), tr("&About SatoshiCoin Wallet"), this);
-    aboutAction->setStatusTip(tr("Show information about SatoshiCoin Wallet"));
+    aboutAction = new QAction(networkStyle->getAppIcon(), tr("&About SWYFT.Network Wallet"), this);
+    aboutAction->setStatusTip(tr("Show information about SWYFT.Network Wallet"));
     aboutAction->setMenuRole(QAction::AboutRole);
 #if QT_VERSION < 0x050000
     aboutQtAction = new QAction(QIcon(":/trolltech/qmessagebox/images/qtlogo-64.png"), tr("About &Qt"), this);
@@ -411,7 +411,7 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
     aboutQtAction->setStatusTip(tr("Show information about Qt"));
     aboutQtAction->setMenuRole(QAction::AboutQtRole);
     optionsAction = new QAction(QIcon(":/icons/options"), tr("&Options..."), this);
-    optionsAction->setStatusTip(tr("Modify configuration options for SatoshiCoin Wallet"));
+    optionsAction->setStatusTip(tr("Modify configuration options for SWYFT.Network Wallet"));
     optionsAction->setMenuRole(QAction::PreferencesRole);
     toggleHideAction = new QAction(networkStyle->getAppIcon(), tr("&Show / Hide"), this);
     toggleHideAction->setStatusTip(tr("Show or hide the main Window"));
@@ -427,9 +427,9 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
     unlockWalletAction->setToolTip(tr("Unlock wallet"));
     lockWalletAction = new QAction(tr("&Lock Wallet"), this);
     signMessageAction = new QAction(QIcon(":/icons/edit"), tr("Sign &message..."), this);
-    signMessageAction->setStatusTip(tr("Sign messages with your SATC addresses to prove you own them"));
+    signMessageAction->setStatusTip(tr("Sign messages with your SWYFT.Network addresses to prove you own them"));
     verifyMessageAction = new QAction(QIcon(":/icons/transaction_0"), tr("&Verify message..."), this);
-    verifyMessageAction->setStatusTip(tr("Verify messages to ensure they were signed with specified SATC addresses"));
+    verifyMessageAction->setStatusTip(tr("Verify messages to ensure they were signed with specified SWYFT.Network addresses"));
     bip38ToolAction = new QAction(QIcon(":/icons/key"), tr("&BIP38 tool"), this);
     bip38ToolAction->setToolTip(tr("Encrypt and decrypt private keys using a passphrase"));
     multiSendAction = new QAction(QIcon(":/icons/edit"), tr("&MultiSend"), this);
@@ -466,7 +466,7 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
     multisigSignAction->setStatusTip(tr("Sign with a multisignature address"));
 
     openAction = new QAction(QApplication::style()->standardIcon(QStyle::SP_FileIcon), tr("Open &URI..."), this);
-    openAction->setStatusTip(tr("Open a SATC: URI or payment request"));
+    openAction->setStatusTip(tr("Open a SWYFT.Network: URI or payment request"));
 
     openBlockExplorerAction = new QAction(QIcon(":/icons/blockexplorer"), "", this);
     openBlockExplorerAction->setStatusTip(tr("Blockchain explorer"));
@@ -481,7 +481,7 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
 
     showHelpMessageAction = new QAction(QApplication::style()->standardIcon(QStyle::SP_MessageBoxInformation), tr("&Command-line options"), this);
     showHelpMessageAction->setMenuRole(QAction::NoRole);
-    showHelpMessageAction->setStatusTip(tr("Show the SatoshiCoin Wallet help message to get a list with possible SATC command-line options"));
+    showHelpMessageAction->setStatusTip(tr("Show the SWYFT.Network Wallet help message to get a list with possible SWYFT.Network command-line options"));
 
     connect(quitAction, SIGNAL(triggered()), qApp, SLOT(quit()));
     connect(aboutAction, SIGNAL(triggered()), this, SLOT(aboutClicked()));
@@ -695,7 +695,7 @@ void BitcoinGUI::createTrayIcon(const NetworkStyle* networkStyle)
 {
 #ifndef Q_OS_MAC
     trayIcon = new QSystemTrayIcon(this);
-    QString toolTip = tr("SatoshiCoin Wallet client") + " " + networkStyle->getTitleAddText();
+    QString toolTip = tr("SWYFT.Network Wallet client") + " " + networkStyle->getTitleAddText();
     trayIcon->setToolTip(toolTip);
     trayIcon->setIcon(networkStyle->getAppIcon());
     trayIcon->show();
@@ -942,7 +942,7 @@ void BitcoinGUI::setNumConnections(int count)
     }
     QIcon connectionItem = QIcon(icon).pixmap(32, 32);
     labelConnectionsIcon->setIcon(connectionItem);
-    labelConnectionsIcon->setToolTip(tr("%n active connection(s) to SatoshiCoin network", "", count));
+    labelConnectionsIcon->setToolTip(tr("%n active connection(s) to SWYFT.Network network", "", count));
 }
 
 void BitcoinGUI::updateSyncAnimation()
@@ -1073,7 +1073,7 @@ void BitcoinGUI::setNumBlocks(int count)
 
 void BitcoinGUI::message(const QString& title, const QString& message, unsigned int style, bool* ret)
 {
-    QString strTitle = tr("SatoshiCoin Wallet"); // default title
+    QString strTitle = tr("SWYFT.Network Wallet"); // default title
     // Default to information icon
     int nMBoxIcon = QMessageBox::Information;
     int nNotifyIcon = Notificator::Information;
@@ -1098,7 +1098,7 @@ void BitcoinGUI::message(const QString& title, const QString& message, unsigned 
             break;
         }
     }
-    // Append title to "SatoshiCoin Wallet - "
+    // Append title to "SWYFT.Network Wallet - "
     if (!msgType.isEmpty())
         strTitle += " - " + msgType;
 

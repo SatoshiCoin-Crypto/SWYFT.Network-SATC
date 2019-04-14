@@ -1,6 +1,6 @@
 Mac OS X Build Instructions and Notes
 ====================================
-This guide will show you how to build satcd (headless client) for OSX.
+This guide will show you how to build swyftd (headless client) for OSX.
 
 Notes
 -----
@@ -40,15 +40,14 @@ Instructions: Homebrew
 
         brew install autoconf automake berkeley-db4 libtool boost miniupnpc openssl pkg-config protobuf qt5 libzmq
 
-### Building `satcd`
+### Building `swyftd`
 
 1. Clone the github tree to get the source code and go into the directory.
 
-        git clone https://SatoshiCoin/SatoshiCoin.git
-        cd SATC
+        git clone https://github.com/SatoshiCoin-Crypto/SatoshiCoin-rebrand.git
+        cd SatoshiCoin-rebrand
 
-2.  Build satcd:
-
+2.  Build swyft
         ./autogen.sh
         ./configure --with-gui=qt5
         make
@@ -57,7 +56,7 @@ Instructions: Homebrew
 
         make check
 
-4.  (Optional) You can also install satcd to your path:
+4.  (Optional) You can also install swyftd to your path:
 
         make install
 
@@ -69,7 +68,7 @@ Download Qt Creator from http://www.qt.io/download/. Download the "community edi
 1. Make sure you installed everything through homebrew mentioned above
 2. Do a proper ./configure --with-gui=qt5 --enable-debug
 3. In Qt Creator do "New Project" -> Import Project -> Import Existing Project
-4. Enter "satc-qt" as project name, enter src/qt as location
+4. Enter "swyft-qt" as project name, enter src/qt as location
 5. Leave the file selection as it is
 6. Confirm the "summary page"
 7. In the "Projects" tab select "Manage Kits..."
@@ -79,11 +78,11 @@ Download Qt Creator from http://www.qt.io/download/. Download the "community edi
 
 Creating a release build
 ------------------------
-You can ignore this section if you are building `satcd` for your own use.
+You can ignore this section if you are building `swyftd` for your own use.
 
-satcd/satc-cli binaries are not included in the satc-Qt.app bundle.
+swyftd/swyft-cli binaries are not included in the swyft-Qt.app bundle.
 
-If you are building `satcd` or `satc-qt` for others, your build machine should be set up
+If you are building `swyftd` or `swyft-qt` for others, your build machine should be set up
 as follows for maximum compatibility:
 
 All dependencies should be compiled with these flags:
@@ -92,30 +91,30 @@ All dependencies should be compiled with these flags:
  -arch x86_64
  -isysroot $(xcode-select --print-path)/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk
 
-Once dependencies are compiled, see release-process.md for how the SATC-Qt.app
+Once dependencies are compiled, see release-process.md for how the SWYFT-Qt.app
 bundle is packaged and signed to create the .dmg disk image that is distributed.
 
 Running
 -------
 
-It's now available at `./satcd`, provided that you are still in the `src`
+It's now available at `./swyftd`, provided that you are still in the `src`
 directory. We have to first create the RPC configuration file, though.
 
-Run `./satcd` to get the filename where it should be put, or just try these
+Run `./swyftd` to get the filename where it should be put, or just try these
 commands:
 
-    echo -e "rpcuser=satcrpc\nrpcpassword=$(xxd -l 16 -p /dev/urandom)" > "/Users/${USER}/Library/Application Support/SATC/satc.conf"
-    chmod 600 "/Users/${USER}/Library/Application Support/SATC/satc.conf"
+    echo -e "rpcuser=swyftrpc\nrpcpassword=$(xxd -l 16 -p /dev/urandom)" > "/Users/${USER}/Library/Application Support/SWYFT/swyft.conf"
+    chmod 600 "/Users/${USER}/Library/Application Support/SWYFT/swyft.conf"
 
 The next time you run it, it will start downloading the blockchain, but it won't
 output anything while it's doing this. This process may take several hours;
 you can monitor its process by looking at the debug.log file, like this:
 
-    tail -f $HOME/Library/Application\ Support/SATC/debug.log
+    tail -f $HOME/Library/Application\ Support/SWYFT/debug.log
 
 Other commands:
 -------
 
-    ./satcd -daemon # to start the satc daemon.
-    ./satc-cli --help  # for a list of command-line options.
-    ./satc-cli help    # When the daemon is running, to get a list of RPC commands
+    ./swyftd -daemon # to start the swyft daemon.
+    ./swyft-cli --help  # for a list of command-line options.
+    ./swyft-cli help    # When the daemon is running, to get a list of RPC commands

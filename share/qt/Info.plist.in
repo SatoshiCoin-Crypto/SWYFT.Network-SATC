@@ -11,13 +11,13 @@
   </array>
 
   <key>CFBundleIconFile</key>
-  <string>satc.icns</string>
+  <string>swyft.icns</string>
 
   <key>CFBundlePackageType</key>
   <string>APPL</string>
 
   <key>CFBundleGetInfoString</key>
-  <string>@CLIENT_VERSION_MAJOR@.@CLIENT_VERSION_MINOR@.@CLIENT_VERSION_REVISION@, Copyright © 2009-@COPYRIGHT_YEAR@ The Bitcoin Core developers, 2014-@COPYRIGHT_YEAR@ The Dash Core developers, 2015-@COPYRIGHT_YEAR@ The PIVX Core developers, 2017-@COPYRIGHT_YEAR@ The SATC Core developers</string>
+  <string>@CLIENT_VERSION_MAJOR@.@CLIENT_VERSION_MINOR@.@CLIENT_VERSION_REVISION@, Copyright © 2009-@COPYRIGHT_YEAR@ The Bitcoin Core developers, 2014-@COPYRIGHT_YEAR@ The Dash Core developers, 2015-@COPYRIGHT_YEAR@ The PIVX Core developers, 2017-@COPYRIGHT_YEAR@ The SWYFT.Network developers</string>
 
   <key>CFBundleShortVersionString</key>
   <string>@CLIENT_VERSION_MAJOR@.@CLIENT_VERSION_MINOR@.@CLIENT_VERSION_REVISION@</string>
@@ -29,10 +29,10 @@
   <string>????</string>
 
   <key>CFBundleExecutable</key>
-  <string>SATC-Qt</string>
+  <string>SWYFT-Qt</string>
 
   <key>CFBundleIdentifier</key>
-  <string>io.satc.SATC-Qt</string>
+  <string>io.swyft.SWYFT-Qt</string>
 
   <key>CFBundleURLTypes</key>
   <array>
@@ -40,10 +40,10 @@
       <key>CFBundleTypeRole</key>
       <string>Editor</string>
       <key>CFBundleURLName</key>
-      <string>io.satc.SATCPayment</string>
+      <string>io.swyft.SWYFTPayment</string>
       <key>CFBundleURLSchemes</key>
       <array>
-        <string>satc</string>
+        <string>swyft</string>
       </array>
     </dict>
   </array>
@@ -52,9 +52,9 @@
   <array>
     <dict>
       <key>UTTypeIdentifier</key>
-      <string>io.satc.paymentrequest</string>
+      <string>io.swyft.paymentrequest</string>
       <key>UTTypeDescription</key>
-      <string>SATC payment request</string>
+      <string>SWYFT.Network payment request</string>
       <key>UTTypeConformsTo</key>
       <array>
         <string>public.data</string>
@@ -62,10 +62,10 @@
       <key>UTTypeTagSpecification</key>
       <dict>
         <key>public.mime-type</key>
-        <string>application/x-satc-payment-request</string>
+        <string>application/x-swyft-payment-request</string>
         <key>public.filename-extension</key>
         <array>
-          <string>satcpaymentrequest</string>
+          <string>swyftpaymentrequest</string>
         </array>
       </dict>
     </dict>
@@ -78,7 +78,7 @@
       <string>Editor</string>
       <key>LSItemContentTypes</key>
       <array>
-        <string>io.satc.paymentrequest</string>
+        <string>io.swyft.paymentrequest</string>
       </array>
       <key>LSHandlerRank</key>
       <string>Owner</string>

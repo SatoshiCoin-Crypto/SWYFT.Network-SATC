@@ -1,39 +1,39 @@
-SATC
+SWYFT.Network
 =====================
 
 Setup
 ---------------------
-[SATC](http://satoshicoin.world/wallet) is the original SATC client and it builds the backbone of the network. However, it downloads and stores the entire history of SATC transactions; depending on the speed of your computer and network connection, the synchronization process can take anywhere from a few hours to a day or more. Thankfully you only have to do this once.
+[SWYFT.Network](http://swyft.network/wallet) is the original SWYFT.Network client and it builds the backbone of the network. However, it downloads and stores the entire history of SWYFT.Network transactions; depending on the speed of your computer and network connection, the synchronization process can take anywhere from a few hours to a day or more. Thankfully you only have to do this once.
 
 Running
 ---------------------
-The following are some helpful notes on how to run SATC on your native platform.
+The following are some helpful notes on how to run SWYFT.Network on your native platform.
 
 ### Unix
 
 Unpack the files into a directory and run:
 
-- bin/32/satc-qt (GUI, 32-bit) or bin/32/satcd (headless, 32-bit)
-- bin/64/satc-qt (GUI, 64-bit) or bin/64/satcd (headless, 64-bit)
+- bin/32/swyft-qt (GUI, 32-bit) or bin/32/swyftd (headless, 32-bit)
+- bin/64/swyft-qt (GUI, 64-bit) or bin/64/swyftd (headless, 64-bit)
 
 ### Windows
 
-Unpack the files into a directory, and then run satc-qt.exe.
+Unpack the files into a directory, and then run swyft-qt.exe.
 
 ### OSX
 
-Drag SATC-Qt to your applications folder, and then run SATC-Qt.
+Drag SWYFT-Qt to your applications folder, and then run SWYFT-Qt.
 
 ### Need Help?
 
-* See the documentation at the [SATC Wiki](https://en.satoshicoin.world/wiki/Main_Page) ***TODO***
+* See the documentation at the [SWYFT.Network Wiki](https://en.swyft.network/wiki/Main_Page) ***TODO***
 for help and more information.
-* Ask for help on [BitcoinTalk](https://bitcointalk.org) or on the [SATC Forum](http://forum.satoshicoin.world/).
+* Ask for help on [BitcoinTalk](https://bitcointalk.org) or on the [SWYFT.Network Forum](http://forum.swyft.network/).
 * Join our Discord server [Discord Server](https://discord.gg/S9adMgS)
 
 Building
 ---------------------
-The following are developer notes on how to build SATC on your native platform. They are not complete guides, but include notes on the necessary libraries, compile flags, etc.
+The following are developer notes on how to build SWYFT.Network on your native platform. They are not complete guides, but include notes on the necessary libraries, compile flags, etc.
 
 - [OSX Build Notes](build-osx.md)
 - [Unix Build Notes](build-unix.md)
@@ -42,7 +42,7 @@ The following are developer notes on how to build SATC on your native platform. 
 
 Development
 ---------------------
-The SATC repo's [root README](https://github.com/SATC-Core/SATC/blob/master/README.md) contains relevant information on the development process and automated testing.
+The SWYFT.Network repo's [root README](https://github.com/SatoshiCoin-Crypto/SatoshiCoin-rebrand/README.md) contains relevant information on the development process and automated testing.
 
 - [Developer Notes](developer-notes.md)
 - [Multiwallet Qt Development](multiwallet-qt.md)
@@ -56,7 +56,7 @@ The SATC repo's [root README](https://github.com/SATC-Core/SATC/blob/master/READ
 
 ### Resources
 
-* Discuss on the [BitcoinTalk](https://bitcointalk.org/index.php?topic=1262920.0) or the [SATC](http://forum.satoshicoin.world/) forum.
+* Discuss on the [BitcoinTalk](https://bitcointalk.org/index.php?topic=1262920.0) or the [SWYFT.Network](http://forum.swyft.network/) forum.
 
 ### Miscellaneous
 - [Assets Attribution](assets-attribution.md)

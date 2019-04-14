@@ -83,7 +83,7 @@ static void secp256k1_scalar_start(void) {
      * Cryptography" (Hankerson, Menezes, Vanstone) in section 3.5.
      *
      * The derivation is described in the paper "Efficient Software Implementation of Public-Key
-     * Cryptography on Sensor Networks Using the MSP430X Micsatcntroller" (Gouvea, Oliveira, Lopez),
+     * Cryptography on Sensor Networks Using the MSP430X Micswyftntroller" (Gouvea, Oliveira, Lopez),
      * Section 4.3 (here we use a somewhat higher-precision estimate):
      * d = a1*b2 - b1*a2
      * g1 = round((2^272)*b2/d)

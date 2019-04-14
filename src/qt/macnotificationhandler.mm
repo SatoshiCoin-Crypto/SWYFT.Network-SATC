@@ -14,7 +14,7 @@
 - (NSString *)__bundleIdentifier
 {
     if (self == [NSBundle mainBundle]) {
-        return @"io.satc.SATC-Qt";
+        return @"io.swyft.SWYFT-Qt";
     } else {
         return [self __bundleIdentifier];
     }

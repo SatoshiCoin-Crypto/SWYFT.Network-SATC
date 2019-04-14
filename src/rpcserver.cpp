@@ -3,7 +3,7 @@
 // Copyright (c) 2014-2015 The Dash developers
 // Copyright (c) 2015-2017 The PIVX developers
 // Copyright (c) 2017-2018 The XDNA Core developers
-// Copyright (c) 2018 The SatoshiCoin Core developers
+// Copyright (c) 2018-2019 The SWYFT.Network developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -244,10 +244,10 @@ UniValue stop(const UniValue& params, bool fHelp)
     if (fHelp || params.size() > 1)
         throw runtime_error(
             "stop\n"
-            "\nStop SatoshiCoin server.");
+            "\nStop SWYFT.Network server.");
     // Shutdown will take long enough that the response should get back
     StartShutdown();
-    return "SatoshiCoin server stopping";
+    return "SWYFT.Network server stopping";
 }
 
 
@@ -324,25 +324,25 @@ static const CRPCCommand vRPCCommands[] =
         {"hidden", "reconsiderblock", &reconsiderblock, true, true, false},
         {"hidden", "setmocktime", &setmocktime, true, false, false},
 
-        /* SATC features */
-        {"satc", "masternode", &masternode, true, true, false},
-        {"satc", "listmasternodes", &listmasternodes, true, true, false},
-        {"satc", "getmasternodecount", &getmasternodecount, true, true, false},
-        {"satc", "masternodeconnect", &masternodeconnect, true, true, false},
-        {"satc", "masternodecurrent", &masternodecurrent, true, true, false},
-        {"satc", "masternodedebug", &masternodedebug, true, true, false},
-        {"satc", "startmasternode", &startmasternode, true, true, false},
-        {"satc", "createmasternodekey", &createmasternodekey, true, true, false},
-        {"satc", "getmasternodeoutputs", &getmasternodeoutputs, true, true, false},
-        {"satc", "listmasternodeconf", &listmasternodeconf, true, true, false},
-        {"satc", "getmasternodestatus", &getmasternodestatus, true, true, false},
-        {"satc", "getmasternodewinners", &getmasternodewinners, true, true, false},
-        {"satc", "getmasternodescores", &getmasternodescores, true, true, false},
-        {"satc", "mnsync", &mnsync, true, true, false},
-        {"satc", "spork", &spork, true, true, false},
-        {"satc", "getpoolinfo", &getpoolinfo, true, true, false},
+        /* SWYFT.Network features */
+        {"swyft", "masternode", &masternode, true, true, false},
+        {"swyft", "listmasternodes", &listmasternodes, true, true, false},
+        {"swyft", "getmasternodecount", &getmasternodecount, true, true, false},
+        {"swyft", "masternodeconnect", &masternodeconnect, true, true, false},
+        {"swyft", "masternodecurrent", &masternodecurrent, true, true, false},
+        {"swyft", "masternodedebug", &masternodedebug, true, true, false},
+        {"swyft", "startmasternode", &startmasternode, true, true, false},
+        {"swyft", "createmasternodekey", &createmasternodekey, true, true, false},
+        {"swyft", "getmasternodeoutputs", &getmasternodeoutputs, true, true, false},
+        {"swyft", "listmasternodeconf", &listmasternodeconf, true, true, false},
+        {"swyft", "getmasternodestatus", &getmasternodestatus, true, true, false},
+        {"swyft", "getmasternodewinners", &getmasternodewinners, true, true, false},
+        {"swyft", "getmasternodescores", &getmasternodescores, true, true, false},
+        {"swyft", "mnsync", &mnsync, true, true, false},
+        {"swyft", "spork", &spork, true, true, false},
+        {"swyft", "getpoolinfo", &getpoolinfo, true, true, false},
 #ifdef ENABLE_WALLET
-        {"satc", "obfuscation", &obfuscation, false, false, true}, /* not threadSafe because of SendMoney */
+        {"swyft", "obfuscation", &obfuscation, false, false, true}, /* not threadSafe because of SendMoney */
 
         /* Wallet */
         {"wallet", "addmultisigaddress", &addmultisigaddress, true, false, true},
@@ -607,16 +607,16 @@ void StartRPCThreads()
         unsigned char rand_pwd[32];
         GetRandBytes(rand_pwd, 32);
         uiInterface.ThreadSafeMessageBox(strprintf(
-                                             _("To use satcd, or the -server option to satc-qt, you must set an rpcpassword in the configuration file:\n"
+                                             _("To use swyftd, or the -server option to swyft-qt, you must set an rpcpassword in the configuration file:\n"
                                                "%s\n"
                                                "It is recommended you use the following random password:\n"
-                                               "rpcuser=satcrpc\n"
+                                               "rpcuser=swyftrpc\n"
                                                "rpcpassword=%s\n"
                                                "(you do not need to remember this password)\n"
                                                "The username and password MUST NOT be the same.\n"
                                                "If the file does not exist, create it with owner-readable-only file permissions.\n"
                                                "It is also recommended to set alertnotify so you are notified of problems;\n"
-                                               "for example: alertnotify=echo %%s | mail -s \"SATC Alert\" admin@foo.com\n"),
+                                               "for example: alertnotify=echo %%s | mail -s \"SWYFT.Network Alert\" admin@foo.com\n"),
                                              GetConfigFile().string(),
                                              EncodeBase58(&rand_pwd[0], &rand_pwd[0] + 32)),
             "", CClientUIInterface::MSG_ERROR | CClientUIInterface::SECURE);
@@ -1067,7 +1067,7 @@ std::vector<std::string> CRPCTable::listCommands() const
 
 std::string HelpExampleCli(string methodname, string args)
 {
-    return "> satc-cli " + methodname + " " + args + "\n";
+    return "> swyft-cli " + methodname + " " + args + "\n";
 }
 
 std::string HelpExampleRpc(string methodname, string args)

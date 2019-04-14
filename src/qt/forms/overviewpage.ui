@@ -251,7 +251,7 @@
                   <cursorShape>PointingHandCursor</cursorShape>
                  </property>
                  <property name="text">
-                  <string>SATC</string>
+                  <string>SWYFT(SATC)</string>
                  </property>
                  <property name="flat">
                   <bool>true</bool>
@@ -310,7 +310,7 @@
                <item>
                 <widget class="QLabel" name="label_SATC2">
                  <property name="text">
-                  <string>SATC</string>
+                  <string>SWYFT(SATC)</string>
                  </property>
                  <property name="alignment">
                   <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
@@ -354,7 +354,7 @@
                <item>
                 <widget class="QLabel" name="label_SATC3">
                  <property name="text">
-                  <string>SATC</string>
+                  <string>SWYFT(SATC)</string>
                  </property>
                  <property name="alignment">
                   <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
@@ -398,7 +398,7 @@
                <item>
                 <widget class="QLabel" name="label_SATC4">
                  <property name="text">
-                  <string>SATC</string>
+                  <string>SWYFT(SATC)</string>
                  </property>
                  <property name="alignment">
                   <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>

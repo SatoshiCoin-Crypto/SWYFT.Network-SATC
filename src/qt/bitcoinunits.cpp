@@ -2,7 +2,7 @@
 // Copyright (c) 2014-2015 The Dash developers
 // Copyright (c) 2015-2017 The PIVX developers
 // Copyright (c) 2017-2018 The XDNA Core developers
-// Copyright (c) 2018 The SatoshiCoin Core developers
+// Copyright (c) 2018-2019 The SWYFT.Network developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -43,11 +43,11 @@ QString BitcoinUnits::id(int unit)
 {
     switch (unit) {
     case SATC:
-        return QString("satc");
+        return QString("swyft");
     case mSATC:
-        return QString("msatc");
+        return QString("mswyft");
     case uSATC:
-        return QString::fromUtf8("usatc");
+        return QString::fromUtf8("uswyft");
     default:
         return QString("???");
     }
@@ -58,22 +58,22 @@ QString BitcoinUnits::name(int unit)
     if (Params().NetworkID() == CBaseChainParams::MAIN) {
         switch (unit) {
         case SATC:
-            return QString("SATC");
+            return QString("SWYFT");
         case mSATC:
-            return QString("mSATC");
+            return QString("mSWYFT");
         case uSATC:
-            return QString::fromUtf8("μSATC");
+            return QString::fromUtf8("μSWYFT");
         default:
             return QString("???");
         }
     } else {
         switch (unit) {
         case SATC:
-            return QString("tSATC");
+            return QString("tSWYFT");
         case mSATC:
-            return QString("mtSATC");
+            return QString("mtSWYFT");
         case uSATC:
-            return QString::fromUtf8("μtSATC");
+            return QString::fromUtf8("μtSWYFT");
         default:
             return QString("???");
         }
@@ -85,22 +85,22 @@ QString BitcoinUnits::description(int unit)
     if (Params().NetworkID() == CBaseChainParams::MAIN) {
         switch (unit) {
         case SATC:
-            return QString("SATC");
+            return QString("SWYFT");
         case mSATC:
-            return QString("Milli-SATC (1 / 1" THIN_SP_UTF8 "000)");
+            return QString("Milli-SWYFT (1 / 1" THIN_SP_UTF8 "000)");
         case uSATC:
-            return QString("Micro-SATC (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+            return QString("Micro-SWYFT (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
         default:
             return QString("???");
         }
     } else {
         switch (unit) {
         case SATC:
-            return QString("TestSATCs");
+            return QString("TestSWYFTs");
         case mSATC:
-            return QString("Milli-TestSATCs (1 / 1" THIN_SP_UTF8 "000)");
+            return QString("Milli-TestSWYFTs (1 / 1" THIN_SP_UTF8 "000)");
         case uSATC:
-            return QString("Micro-TestSATCs (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+            return QString("Micro-TestSWYFTs (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
         default:
             return QString("???");
         }

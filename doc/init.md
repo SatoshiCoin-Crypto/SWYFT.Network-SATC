@@ -1,60 +1,60 @@
-Sample init scripts and service configuration for satcd
+Sample init scripts and service configuration for swyftd
 ==========================================================
 
 Sample scripts and configuration files for systemd, Upstart and OpenRC
 can be found in the contrib/init folder.
 
-    contrib/init/satcd.service:    systemd service unit configuration
-    contrib/init/satcd.openrc:     OpenRC compatible SysV style init script
-    contrib/init/satcd.openrcconf: OpenRC conf.d file
-    contrib/init/satcd.conf:       Upstart service configuration file
-    contrib/init/satcd.init:       CentOS compatible SysV style init script
+    contrib/init/swyftd.service:    systemd service unit configuration
+    contrib/init/swyftd.openrc:     OpenRC compatible SysV style init script
+    contrib/init/swyftd.openrcconf: OpenRC conf.d file
+    contrib/init/swyftd.conf:       Upstart service configuration file
+    contrib/init/swyftd.init:       CentOS compatible SysV style init script
 
 1. Service User
 ---------------------------------
 
-All three startup configurations assume the existence of a "satc" user
+All three startup configurations assume the existence of a "swyft" user
 and group.  They must be created before attempting to use these scripts.
 
 2. Configuration
 ---------------------------------
 
-At a bare minimum, satcd requires that the rpcpassword setting be set
+At a bare minimum, swyftd requires that the rpcpassword setting be set
 when running as a daemon.  If the configuration file does not exist or this
-setting is not set, satcd will shutdown promptly after startup.
+setting is not set, swyftd will shutdown promptly after startup.
 
 This password does not have to be remembered or typed as it is mostly used
-as a fixed token that satcd and client programs read from the configuration
+as a fixed token that swyftd and client programs read from the configuration
 file, however it is recommended that a strong and secure password be used
 as this password is security critical to securing the wallet should the
 wallet be enabled.
 
-If satcd is run with "-daemon" flag, and no rpcpassword is set, it will
+If swyftd is run with "-daemon" flag, and no rpcpassword is set, it will
 print a randomly generated suitable password to stderr.  You can also
 generate one from the shell yourself like this:
 
 bash -c 'tr -dc a-zA-Z0-9 < /dev/urandom | head -c32 && echo'
 
-Once you have a password in hand, set rpcpassword= in /etc/satc/satc.conf
+Once you have a password in hand, set rpcpassword= in /etc/swyft/swyft.conf
 
 For an example configuration file that describes the configuration settings,
-see contrib/debian/examples/satc.conf.
+see contrib/debian/examples/swyft.conf.
 
 3. Paths
 ---------------------------------
 
 All three configurations assume several paths that might need to be adjusted.
 
-Binary:              /usr/bin/satcd
-Configuration file:  /etc/satc/satc.conf
-Data directory:      /var/lib/satcd
-PID file:            /var/run/satcd/satcd.pid (OpenRC and Upstart)
-                     /var/lib/satcd/satcd.pid (systemd)
+Binary:              /usr/bin/swyftd
+Configuration file:  /etc/swyft/swyft.conf
+Data directory:      /var/lib/swyftd
+PID file:            /var/run/swyftd/swyftd.pid (OpenRC and Upstart)
+                     /var/lib/swyftd/swyftd.pid (systemd)
 
 The configuration file, PID directory (if applicable) and data directory
-should all be owned by the satc user and group.  It is advised for security
+should all be owned by the swyft user and group.  It is advised for security
 reasons to make the configuration file and data directory only readable by the
-satc user and group.  Access to satc-cli and other satcd rpc clients
+swyft user and group.  Access to swyft-cli and other swyftd rpc clients
 can then be controlled by group membership.
 
 4. Installing Service Configuration
@@ -66,19 +66,19 @@ Installing this .service file consists on just copying it to
 /usr/lib/systemd/system directory, followed by the command
 "systemctl daemon-reload" in order to update running systemd configuration.
 
-To test, run "systemctl start satcd" and to enable for system startup run
-"systemctl enable satcd"
+To test, run "systemctl start swyftd" and to enable for system startup run
+"systemctl enable swyftd"
 
 4b) OpenRC
 
-Rename satcd.openrc to satcd and drop it in /etc/init.d.  Double
+Rename swyftd.openrc to swyftd and drop it in /etc/init.d.  Double
 check ownership and permissions and make it executable.  Test it with
-"/etc/init.d/satcd start" and configure it to run on startup with
-"rc-update add satcd"
+"/etc/init.d/swyftd start" and configure it to run on startup with
+"rc-update add swyftd"
 
 4c) Upstart (for Debian/Ubuntu based distributions)
 
-Drop satcd.conf in /etc/init.  Test by running "service satcd start"
+Drop swyftd.conf in /etc/init.  Test by running "service swyftd start"
 it will automatically start on reboot.
 
 NOTE: This script is incompatible with CentOS 5 and Amazon Linux 2014 as they
@@ -86,11 +86,11 @@ use old versions of Upstart and do not supply the start-stop-daemon uitility.
 
 4d) CentOS
 
-Copy satcd.init to /etc/init.d/satcd. Test by running "service satcd start".
+Copy swyftd.init to /etc/init.d/swyftd. Test by running "service swyftd start".
 
-Using this script, you can adjust the path and flags to the satcd program by
-setting the satcd and FLAGS environment variables in the file
-/etc/sysconfig/satcd. You can also use the DAEMONOPTS environment variable here.
+Using this script, you can adjust the path and flags to the swyftd program by
+setting the swyftd and FLAGS environment variables in the file
+/etc/sysconfig/swyftd. You can also use the DAEMONOPTS environment variable here.
 
 5. Auto-respawn
 -----------------------------------

@@ -1,0 +1,26 @@
+# /etc/conf.d/swyftd: config file for /etc/init.d/swyftd
+
+# Config file location
+#BITCOIND_CONFIGFILE="/etc/swyft/swyft.conf"
+
+# What directory to write pidfile to?  (created and owned by $BITCOIND_USER)
+#BITCOIND_PIDDIR="/var/run/swyftd"
+
+# What filename to give the pidfile
+#BITCOIND_PIDFILE="${BITCOIND_PIDDIR}/swyftd.pid"
+
+# Where to write swyftd data (be mindful that the blockchain is large)
+#BITCOIND_DATADIR="/var/lib/swyftd"
+
+# User and group to own swyftd process
+#BITCOIND_USER="swyft"
+#BITCOIND_GROUP="swyft"
+
+# Path to swyftd executable
+#BITCOIND_BIN="/usr/bin/swyftd"
+
+# Nice value to run swyftd under
+#BITCOIND_NICE=0
+
+# Additional options (avoid -conf and -datadir, use flags above)
+BITCOIND_OPTS=""

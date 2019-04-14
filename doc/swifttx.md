@@ -12,8 +12,8 @@ When a "Transaction Lock" occurs the hash of the related transaction is broadcas
 * `zmqpubhashtxlock`: publishes the transaction hash when locked via SwiftX
 
 This mechanism has been integrated into Bitcore-Node which allows for notification to be broadcast through Insight API in one of two ways:
-* WebSocket: [https://github.com/SATC-Core/insight-api-satc#web-socket-api](https://github.com/SATC-Core/insight-api-satc#web-socket-api)
-* API: [https://github.com/SATC-Core/insight-api-satc#swifttx-transactions](https://github.com/SATC-Core/insight-api-satc#swifttx-transactions)
+* WebSocket: [https://github.com/SatoshiCoin-Crypto/SatoshiCoin-rebrand/insight-api-swyft#web-socket-api](https://github.com/SatoshiCoin-Crypto/SatoshiCoin-rebrand/insight-api-swyft#web-socket-api)
+* API: [https://github.com/SatoshiCoin-Crypto/SatoshiCoin-rebrand/insight-api-swyft#swifttx-transactions](https://github.com/SatoshiCoin-Crypto/SatoshiCoin-rebrand/insight-api-swyft#swifttx-transactions)
 
 ####Command line option
 
@@ -27,13 +27,13 @@ When a wallet SwiftX transaction is successfully locked a shell command provided
 
 Details pertaining to an observed "Transaction Lock" can also be retrieved through RPC, it’s important however to understand the underlying mechanism.
 
-By default, the SATC Core daemon will launch using the following constant:
+By default, the SWYFT.Network daemon will launch using the following constant:
 
 ```
 static const int DEFAULT_SWIFTTX_DEPTH = 5;
 ```
 
-This value can be overridden by passing the following argument to the SATC Core daemon:
+This value can be overridden by passing the following argument to the SWYFT.Network daemon:
 
 ```
 -swifttxdepth=<n>

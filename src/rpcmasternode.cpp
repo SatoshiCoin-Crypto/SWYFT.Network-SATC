@@ -2,7 +2,7 @@
 // Copyright (c) 2015-2017 The PIVX developers
 // Copyright (c) 2018 The Bulwark developers
 // Copyright (c) 2017-2018 The XDNA Core developers
-// Copyright (c) 2018 The SatoshiCoin Core developers
+// Copyright (c) 2018-2019 The SWYFT.Network developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -47,7 +47,7 @@ void SendMoney(const CTxDestination& address, CAmount nValue, CWalletTx& wtxNew,
         throw JSONRPCError(RPC_WALLET_ERROR, strError);
     }
 
-    // Parse SATC address
+    // Parse SWYFT.Network address
     CScript scriptPubKey = GetScriptForDestination(address);
 
     // Create and send the transaction
@@ -67,8 +67,8 @@ UniValue obfuscation(const UniValue& params, bool fHelp)
 {
     if (fHelp || params.size() == 0)
         throw runtime_error(
-            "obfuscation <satcaddress> <amount>\n"
-            "satcaddress, reset, or auto (AutoDenominate)"
+            "obfuscation <swyftaddress> <amount>\n"
+            "swyftaddress, reset, or auto (AutoDenominate)"
             "<amount> is a real and will be rounded to the next 0.1" +
             HelpRequiringPassphrase());
 
@@ -89,14 +89,14 @@ UniValue obfuscation(const UniValue& params, bool fHelp)
 
     if (params.size() != 2)
         throw runtime_error(
-            "obfuscation <satcaddress> <amount>\n"
-            "satcaddress, denominate, or auto (AutoDenominate)"
+            "obfuscation <swyftaddress> <amount>\n"
+            "swyftaddress, denominate, or auto (AutoDenominate)"
             "<amount> is a real and will be rounded to the next 0.1" +
             HelpRequiringPassphrase());
 
     CBitcoinAddress address(params[0].get_str());
     if (!address.IsValid())
-        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid SatoshiCoin address");
+        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid SWYFT.Network address");
 
     // Amount
     CAmount nAmount = AmountFromValue(params[1]);
@@ -121,7 +121,7 @@ UniValue getpoolinfo(const UniValue& params, bool fHelp)
 
             "\nResult:\n"
             "{\n"
-            "  \"current\": \"addr\",  (string) SatoshiCoin address of current masternode\n"
+            "  \"current\": \"addr\",  (string) SWYFT.Network address of current masternode\n"
             "  \"state\": xxxx,        (string) unknown\n"
             "  \"entries\": xxxx,      (numeric) Number of entries\n"
             "  \"accepted\": xxxx,     (numeric) Number of entries accepted\n"
@@ -168,7 +168,7 @@ UniValue masternode(const UniValue& params, bool fHelp)
             "  debug        - Print masternode status\n"
             "  genkey       - Generate new masternodeprivkey\n"
             "  outputs      - Print masternode compatible outputs\n"
-            "  start        - Start masternode configured in satc.conf\n"
+            "  start        - Start masternode configured in swyft.conf\n"
             "  start-alias  - Start single masternode by assigned alias configured in masternode.conf\n"
             "  start-<mode> - Start masternodes configured in masternode.conf (<mode>: 'all', 'missing', 'disabled')\n"
             "  status       - Print masternode status information\n"
@@ -304,7 +304,7 @@ UniValue listmasternodes(const UniValue& params, bool fHelp)
             "    \"txhash\": \"hash\",  (string) Collateral transaction hash\n"
             "    \"outidx\": n,         (numeric) Collateral transaction output index\n"
             "    \"status\": s,         (string) Status (ENABLED/EXPIRED/REMOVE/etc)\n"
-            "    \"addr\": \"addr\",    (string) Masternode SatoshiCoin address\n"
+            "    \"addr\": \"addr\",    (string) Masternode SWYFT.Network address\n"
             "    \"version\": v,        (numeric) Masternode protocol version\n"
             "    \"lastseen\": ttt,     (numeric) The time in seconds since epoch (Jan 1 1970 GMT) of the last seen\n"
             "    \"activetime\": ttt,   (numeric) The time in seconds since epoch (Jan 1 1970 GMT) masternode has been active\n"
@@ -872,7 +872,7 @@ UniValue getmasternodestatus (const UniValue& params, bool fHelp)
             "  \"txhash\": \"xxxx\",      (string) Collateral transaction hash\n"
             "  \"outputidx\": n,        (numeric) Collateral transaction output index number\n"
             "  \"netaddr\": \"xxxx\",     (string) Masternode network address\n"
-            "  \"addr\": \"xxxx\",        (string) SatoshiCoin address for masternode payments\n"
+            "  \"addr\": \"xxxx\",        (string) SWYFT.Network address for masternode payments\n"
             "  \"status\": \"xxxx\",      (string) Masternode status\n"
             "  \"message\": \"xxxx\"      (string) Masternode status message\n"
             "}\n"
@@ -914,7 +914,7 @@ UniValue getmasternodewinners(const UniValue& params, bool fHelp)
             "  {\n"
             "    \"nHeight\": n,           (numeric) block height\n"
             "    \"winner\": {\n"
-            "      \"address\": \"xxxx\",  (string)  SatoshiCoin MN Address\n"
+            "      \"address\": \"xxxx\",  (string)  SWYFT.Network MN Address\n"
             "      \"level\": n,           (numeric) Masternode level\n"
             "      \"nVotes\": n,          (numeric) Number of votes for winner\n"
             "    }\n"
@@ -928,7 +928,7 @@ UniValue getmasternodewinners(const UniValue& params, bool fHelp)
             "    \"nHeight\": n,            (numeric) block height\n"
             "    \"winner\": [\n"
             "      {\n"
-            "        \"address\": \"xxxx\", (string)  SatoshiCoin MN Address\n"
+            "        \"address\": \"xxxx\", (string)  SWYFT.Network MN Address\n"
             "        \"level\": n,          (numeric) Masternode level\n"
             "        \"nVotes\": n,         (numeric) Number of votes for winner\n"
             "      }\n"

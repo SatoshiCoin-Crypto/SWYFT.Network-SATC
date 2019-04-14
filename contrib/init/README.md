@@ -1,10 +1,10 @@
 Sample configuration files for:
 
-SystemD: satcd.service
-Upstart: satcd.conf
-OpenRC:  satcd.openrc
-         satcd.openrcconf
-CentOS:  satcd.init
+SystemD: swyftd.service
+Upstart: swyftd.conf
+OpenRC:  swyftd.openrc
+         swyftd.openrcconf
+CentOS:  swyftd.init
 
 have been made available to assist packagers in creating node packages here.
 

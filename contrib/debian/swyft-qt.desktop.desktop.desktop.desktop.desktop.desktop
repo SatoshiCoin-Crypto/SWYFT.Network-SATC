@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=SWYFT
+Comment=SWYFT.Network P2P Cryptocurrency
+Exec=swyft-qt %u
+Terminal=false
+Type=Application
+Icon=swyft128
+MimeType=x-scheme-handler/swyft;
+Categories=Office;Finance;
+Name[ru]=swyft-qt.desktop.desktop.desktop.desktop.desktop

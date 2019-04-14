@@ -17,7 +17,7 @@ BOOST_AUTO_TEST_CASE(subsidy_limit_test)
 {
     CAmount nSum = 0;
     for (int nHeight = 0; nHeight < 1; nHeight += 1) {
-        /* premine in block 1 (3,000,000 SATC) */
+        /* premine in block 1 (3,000,000 SWYFT) */
         CAmount nSubsidy = GetBlockValue(nHeight);
         BOOST_CHECK(nSubsidy <= 3000000 * COIN);
         nSum += nSubsidy;

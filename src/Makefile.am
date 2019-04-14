@@ -70,15 +70,15 @@ noinst_PROGRAMS =
 TESTS =
 
 if BUILD_BITCOIND
-  bin_PROGRAMS += satcd
+  bin_PROGRAMS += swyftd
 endif
 
 if BUILD_BITCOIN_UTILS
-  bin_PROGRAMS += satc-cli satc-tx
+  bin_PROGRAMS += swyft-cli swyft-tx
 endif
 
 .PHONY: FORCE
-# satc core #
+# swyft core #
 BITCOIN_CORE_H = \
   activemasternode.h \
   addrman.h \
@@ -174,7 +174,7 @@ obj/build.h: FORCE
 	  "$(abs_top_srcdir)"
 libbitcoin_util_a-clientversion.$(OBJEXT): obj/build.h
 
-# server: shared between satcd and satc-qt
+# server: shared between swyftd and swyft-qt
 libbitcoin_server_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(MINIUPNPC_CPPFLAGS) $(EVENT_CFLAGS) $(EVENT_PTHREADS_CFLAGS)
 libbitcoin_server_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libbitcoin_server_a_SOURCES = \
@@ -215,7 +215,7 @@ libbitcoin_zmq_a_SOURCES = \
   zmq/zmqpublishnotifier.cpp
 endif
 
-# wallet: shared between satcd and satc-qt, but only linked
+# wallet: shared between swyftd and swyft-qt, but only linked
 # when wallet enabled
 libbitcoin_wallet_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
 libbitcoin_wallet_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
@@ -275,7 +275,7 @@ crypto_libbitcoin_crypto_a_SOURCES = \
   crypto/sph_types.h
 
 
-# common: shared between satcd, and satc-qt and non-server tools
+# common: shared between swyftd, and swyft-qt and non-server tools
 libbitcoin_common_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
 libbitcoin_common_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libbitcoin_common_a_SOURCES = \
@@ -333,7 +333,7 @@ libbitcoin_util_a_SOURCES += compat/glibc_compat.cpp
 libbitcoin_util_a_SOURCES += compat/glibcxx_compat.cpp
 endif
 
-# cli: shared between satc-cli and satc-qt
+# cli: shared between swyft-cli and swyft-qt
 libbitcoin_cli_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
 libbitcoin_cli_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libbitcoin_cli_a_SOURCES = \
@@ -343,16 +343,16 @@ libbitcoin_cli_a_SOURCES = \
 nodist_libbitcoin_util_a_SOURCES = $(srcdir)/obj/build.h
 #
 
-# satcd binary #
-satcd_SOURCES = satcd.cpp
-satcd_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
-satcd_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-satcd_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+# swyftd binary #
+swyftd_SOURCES = swyftd.cpp
+swyftd_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+swyftd_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+swyftd_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-satcd_SOURCES += satcd-res.rc
+swyftd_SOURCES += swyftd-res.rc
 endif
-satcd_LDADD = \
+swyftd_LDADD = \
   $(LIBBITCOIN_SERVER) \
   $(LIBBITCOIN_COMMON) \
   $(LIBUNIVALUE) \
@@ -364,41 +364,41 @@ satcd_LDADD = \
   $(LIBMEMENV) \
   $(LIBSECP256K1)
 
-satcd_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS) $(ZMQ_LIBS)
+swyftd_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS) $(ZMQ_LIBS)
 
-# satc-cli binary #
-satc_cli_SOURCES = satc-cli.cpp
-satc_cli_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(EVENT_CFLAGS)
-satc_cli_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-satc_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+# swyft-cli binary #
+swyft_cli_SOURCES = swyft-cli.cpp
+swyft_cli_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(EVENT_CFLAGS)
+swyft_cli_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+swyft_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-satc_cli_SOURCES += satc-cli-res.rc
+swyft_cli_SOURCES += swyft-cli-res.rc
 endif
 
-satc_cli_LDADD = \
+swyft_cli_LDADD = \
   $(LIBBITCOIN_CLI) \
   $(LIBUNIVALUE) \
   $(LIBBITCOIN_UTIL) \
   $(LIBBITCOIN_CRYPTO)
 
-satc_cli_LDADD += $(BOOST_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(EVENT_LIBS)
+swyft_cli_LDADD += $(BOOST_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(EVENT_LIBS)
 #
 
-# satc-tx binary #
-satc_tx_SOURCES = satc-tx.cpp
-satc_tx_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
-satc_tx_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-satc_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+# swyft-tx binary #
+swyft_tx_SOURCES = swyft-tx.cpp
+swyft_tx_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+swyft_tx_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+swyft_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
-satc_tx_LDADD = \
+swyft_tx_LDADD = \
   $(LIBUNIVALUE) \
   $(LIBBITCOIN_COMMON) \
   $(LIBBITCOIN_UTIL) \
   $(LIBBITCOIN_CRYPTO) \
   $(LIBSECP256K1)
 
-satc_tx_LDADD += $(BOOST_LIBS) $(CRYPTO_LIBS)
+swyft_tx_LDADD += $(BOOST_LIBS) $(CRYPTO_LIBS)
 #
 
 if BUILD_BITCOIN_LIBS

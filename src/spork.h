@@ -2,7 +2,7 @@
 // Copyright (c) 2016-2017 The PIVX developers
 // Copyright (c) 2018 The Bulwark developers
 // Copyright (c) 2017-2018 The XDNA Core developers
-// Copyright (c) 2018 The SatoshiCoin Core developers
+// Copyright (c) 2018-2019 The SWYFT.Network developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -39,7 +39,7 @@ using namespace boost;
 
 #define SPORK_1_SWIFTTX_DEFAULT 978307200                         //2001-1-1
 #define SPORK_2_SWIFTTX_BLOCK_FILTERING_DEFAULT 1424217600        //2015-2-18
-#define SPORK_3_MAX_VALUE_DEFAULT 1000                            //1000 SATC
+#define SPORK_3_MAX_VALUE_DEFAULT 1000                            //1000 SWYFT
 #define SPORK_4_MASTERNODE_PAYMENT_ENFORCEMENT_DEFAULT 4529244393 //OFF at start to prevent nodes autoban
 #define SPORK_5_RECONSIDER_BLOCKS_DEFAULT 0
 #define SPORK_6_MN_WINNER_MINIMUM_AGE_DEFAULT 8000               // Age in seconds. This should be > MASTERNODE_REMOVAL_SECONDS to avoid

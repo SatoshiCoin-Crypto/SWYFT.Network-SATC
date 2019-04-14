@@ -1,33 +1,33 @@
-bin_PROGRAMS += qt/satc-qt
+bin_PROGRAMS += qt/swyft-qt
 EXTRA_LIBRARIES += qt/libbitcoinqt.a
 
-# satc qt core #
+# swyft qt core #
 QT_TS = \
-  qt/locale/satc_bg.ts \
-  qt/locale/satc_ca.ts \
-  qt/locale/satc_cs.ts \
-  qt/locale/satc_da.ts \
-  qt/locale/satc_de.ts \
-  qt/locale/satc_en.ts \
-  qt/locale/satc_en_US.ts \
-  qt/locale/satc_es.ts \
-  qt/locale/satc_fi.ts \
-  qt/locale/satc_fr_FR.ts \
-  qt/locale/satc_it.ts \
-  qt/locale/satc_ja.ts \
-  qt/locale/satc_ko_KR.ts \
-  qt/locale/satc_nl.ts \
-  qt/locale/satc_pl.ts \
-  qt/locale/satc_pt.ts \
-  qt/locale/satc_pt_BR.ts \
-  qt/locale/satc_ro_RO.ts \
-  qt/locale/satc_ru.ts \
-  qt/locale/satc_sk.ts \
-  qt/locale/satc_sv.ts \
-  qt/locale/satc_tr.ts \
-  qt/locale/satc_uk.ts \
-  qt/locale/satc_zh_CN.ts \
-  qt/locale/satc_zh_TW.ts
+  qt/locale/swyft_bg.ts \
+  qt/locale/swyft_ca.ts \
+  qt/locale/swyft_cs.ts \
+  qt/locale/swyft_da.ts \
+  qt/locale/swyft_de.ts \
+  qt/locale/swyft_en.ts \
+  qt/locale/swyft_en_US.ts \
+  qt/locale/swyft_es.ts \
+  qt/locale/swyft_fi.ts \
+  qt/locale/swyft_fr_FR.ts \
+  qt/locale/swyft_it.ts \
+  qt/locale/swyft_ja.ts \
+  qt/locale/swyft_ko_KR.ts \
+  qt/locale/swyft_nl.ts \
+  qt/locale/swyft_pl.ts \
+  qt/locale/swyft_pt.ts \
+  qt/locale/swyft_pt_BR.ts \
+  qt/locale/swyft_ro_RO.ts \
+  qt/locale/swyft_ru.ts \
+  qt/locale/swyft_sk.ts \
+  qt/locale/swyft_sv.ts \
+  qt/locale/swyft_tr.ts \
+  qt/locale/swyft_uk.ts \
+  qt/locale/swyft_zh_CN.ts \
+  qt/locale/swyft_zh_TW.ts
 
 QT_FORMS_UI = \
   qt/forms/addressbookpage.ui \
@@ -112,16 +112,16 @@ BITCOIN_MM = \
   qt/macnotificationhandler.mm
 
 QT_MOC = \
-  qt/satc.moc \
+  qt/swyft.moc \
   qt/bitcoinamountfield.moc \
   qt/intro.moc \
   qt/overviewpage.moc \
   qt/rpcconsole.moc
 
-QT_QRC_CPP = qt/qrc_satc.cpp
-QT_QRC = qt/satc.qrc
-QT_QRC_LOCALE_CPP = qt/qrc_satc_locale.cpp
-QT_QRC_LOCALE = qt/satc_locale.qrc
+QT_QRC_CPP = qt/qrc_swyft.cpp
+QT_QRC = qt/swyft.qrc
+QT_QRC_LOCALE_CPP = qt/qrc_swyft_locale.cpp
+QT_QRC_LOCALE = qt/swyft_locale.qrc
 
 PROTOBUF_CC = qt/paymentrequest.pb.cc
 PROTOBUF_H = qt/paymentrequest.pb.h
@@ -191,10 +191,10 @@ BITCOIN_QT_H = \
 RES_ICONS = \
   qt/res/icons/add.png \
   qt/res/icons/address-book.png \
-  qt/res/icons/satc.ico \
-  qt/res/icons/satc.png \
-  qt/res/icons/satc_testnet.ico \
-  qt/res/icons/satc_testnet.png \
+  qt/res/icons/swyft.ico \
+  qt/res/icons/swyft.png \
+  qt/res/icons/swyft_testnet.ico \
+  qt/res/icons/swyft_testnet.png \
   qt/res/icons/browse.png \
   qt/res/icons/clock1.png \
   qt/res/icons/clock2.png \
@@ -243,7 +243,7 @@ RES_ICONS = \
   qt/res/icons/tx_mined.png  
   
 RES_FONTS = \
-    qt/res/fonts/satc_font.ttf
+    qt/res/fonts/swyft_font.ttf
 
 BITCOIN_QT_CPP = \
   qt/bitcoinaddressvalidator.cpp \
@@ -313,7 +313,7 @@ RES_IMAGES = \
   qt/res/images/about.png \
   qt/res/images/splash.png \
   qt/res/images/splash_testnet.png \
-  qt/res/images/satc_logo_horizontal.png \
+  qt/res/images/swyft_logo_horizontal.png \
   qt/res/images/frame_blue.png \
   qt/res/images/downArrow.png \
   qt/res/images/downArrow_small.png \
@@ -328,7 +328,7 @@ RES_CSS = \
 
 RES_MOVIES = $(wildcard $(srcdir)/qt/res/movies/spinner-*.png)
 
-BITCOIN_RC = qt/res/satc-qt-res.rc
+BITCOIN_RC = qt/res/swyft-qt-res.rc
 
 BITCOIN_QT_INCLUDES = -I$(builddir)/qt -I$(srcdir)/qt -I$(srcdir)/qt/forms \
   -I$(builddir)/qt/forms
@@ -348,69 +348,69 @@ QT_FORMS_H=$(join $(dir $(QT_FORMS_UI)),$(addprefix ui_, $(notdir $(QT_FORMS_UI:
 # Most files will depend on the forms and moc files as includes. Generate them
 # before anything else.
 $(QT_MOC): $(QT_FORMS_H)
-$(qt_libbitcoinqt_a_OBJECTS) $(qt_satc_qt_OBJECTS) : | $(QT_MOC)
+$(qt_libbitcoinqt_a_OBJECTS) $(qt_swyft_qt_OBJECTS) : | $(QT_MOC)
 
 #Generating these with a half-written protobuf header leads to wacky results.
 #This makes sure it's done.
 $(QT_MOC): $(PROTOBUF_H)
 $(QT_MOC_CPP): $(PROTOBUF_H)
 
-# satc-qt binary #
-qt_satc_qt_CPPFLAGS = $(BITCOIN_INCLUDES) $(BITCOIN_QT_INCLUDES) \
+# swyft-qt binary #
+qt_swyft_qt_CPPFLAGS = $(BITCOIN_INCLUDES) $(BITCOIN_QT_INCLUDES) \
   $(QT_INCLUDES) $(PROTOBUF_CFLAGS) $(QR_CFLAGS)
 
-qt_satc_qt_SOURCES = qt/satc.cpp
+qt_swyft_qt_SOURCES = qt/swyft.cpp
 if TARGET_DARWIN
-  qt_satc_qt_SOURCES += $(BITCOIN_MM)
+  qt_swyft_qt_SOURCES += $(BITCOIN_MM)
 endif
 if TARGET_WINDOWS
-  qt_satc_qt_SOURCES += $(BITCOIN_RC)
+  qt_swyft_qt_SOURCES += $(BITCOIN_RC)
 endif
-qt_satc_qt_LDADD = qt/libbitcoinqt.a $(LIBBITCOIN_SERVER)
+qt_swyft_qt_LDADD = qt/libbitcoinqt.a $(LIBBITCOIN_SERVER)
 if ENABLE_WALLET
-qt_satc_qt_LDADD += $(LIBBITCOIN_WALLET)
+qt_swyft_qt_LDADD += $(LIBBITCOIN_WALLET)
 endif
 if ENABLE_ZMQ
-qt_satc_qt_LDADD += $(LIBBITCOIN_ZMQ) $(ZMQ_LIBS)
+qt_swyft_qt_LDADD += $(LIBBITCOIN_ZMQ) $(ZMQ_LIBS)
 endif
-qt_satc_qt_LDADD += $(LIBBITCOIN_CLI) $(LIBBITCOIN_COMMON) $(LIBBITCOIN_UTIL) $(LIBBITCOIN_CRYPTO) $(LIBUNIVALUE) $(LIBLEVELDB) $(LIBMEMENV) \
+qt_swyft_qt_LDADD += $(LIBBITCOIN_CLI) $(LIBBITCOIN_COMMON) $(LIBBITCOIN_UTIL) $(LIBBITCOIN_CRYPTO) $(LIBUNIVALUE) $(LIBLEVELDB) $(LIBMEMENV) \
   $(BOOST_LIBS) $(QT_LIBS) $(QT_DBUS_LIBS) $(QR_LIBS) $(PROTOBUF_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(LIBSECP256K1) \
   $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS)
-qt_satc_qt_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(QT_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
-qt_satc_qt_LIBTOOLFLAGS = --tag CXX
+qt_swyft_qt_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(QT_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+qt_swyft_qt_LIBTOOLFLAGS = --tag CXX
 
 #locale/foo.ts -> locale/foo.qm
 QT_QM=$(QT_TS:.ts=.qm)
 
 .SECONDARY: $(QT_QM)
 
-qt/satcstrings.cpp: $(libbitcoin_server_a_SOURCES) $(libbitcoin_wallet_a_SOURCES) $(libbitcoin_common_a_SOURCES)
+qt/swyftstrings.cpp: $(libbitcoin_server_a_SOURCES) $(libbitcoin_wallet_a_SOURCES) $(libbitcoin_common_a_SOURCES)
 	@test -n $(XGETTEXT) || echo "xgettext is required for updating translations"
 	$(AM_V_GEN) cd $(srcdir); XGETTEXT=$(XGETTEXT) $(PYTHON) ../share/qt/extract_strings_qt.py $^
 
-translate: qt/satcstrings.cpp $(QT_FORMS_UI) $(QT_FORMS_UI) $(BITCOIN_QT_CPP) $(BITCOIN_QT_H) $(BITCOIN_MM)
+translate: qt/swyftstrings.cpp $(QT_FORMS_UI) $(QT_FORMS_UI) $(BITCOIN_QT_CPP) $(BITCOIN_QT_H) $(BITCOIN_MM)
 	@test -n $(LUPDATE) || echo "lupdate is required for updating translations"
-	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(LUPDATE) $^ -locations relative -no-obsolete -ts qt/locale/satc_en.ts
+	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(LUPDATE) $^ -locations relative -no-obsolete -ts qt/locale/swyft_en.ts
 
 $(QT_QRC_LOCALE_CPP): $(QT_QRC_LOCALE) $(QT_QM)
 	@test -f $(RCC)
 	@test -f $(@D)/$(<F) || cp -f $< $(@D)
-	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(RCC) -name satc_locale $(@D)/$(<F) | \
+	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(RCC) -name swyft_locale $(@D)/$(<F) | \
 	  $(SED) -e '/^\*\*.*Created:/d' -e '/^\*\*.*by:/d' > $@
 
 $(QT_QRC_CPP): $(QT_QRC) $(QT_FORMS_H) $(RES_ICONS) $(RES_IMAGES) $(RES_CSS) $(RES_MOVIES) $(PROTOBUF_H) $(RES_FONTS)
 	@test -f $(RCC)
-	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(RCC) -name satc $< | \
+	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(RCC) -name swyft $< | \
 	  $(SED) -e '/^\*\*.*Created:/d' -e '/^\*\*.*by:/d' > $@
 
 CLEAN_QT = $(nodist_qt_libbitcoinqt_a_SOURCES) $(QT_QM) $(QT_FORMS_H) qt/*.gcda qt/*.gcno
 
 CLEANFILES += $(CLEAN_QT)
 
-satc_qt_clean: FORCE
-	rm -f $(CLEAN_QT) $(qt_libbitcoinqt_a_OBJECTS) $(qt_satc_qt_OBJECTS) qt/satc-qt$(EXEEXT) $(LIBBITCOINQT)
+swyft_qt_clean: FORCE
+	rm -f $(CLEAN_QT) $(qt_libbitcoinqt_a_OBJECTS) $(qt_swyft_qt_OBJECTS) qt/swyft-qt$(EXEEXT) $(LIBBITCOINQT)
 
-satc_qt : qt/satc-qt$(EXEEXT)
+swyft_qt : qt/swyft-qt$(EXEEXT)
 
 ui_%.h: %.ui
 	@test -f $(UIC)

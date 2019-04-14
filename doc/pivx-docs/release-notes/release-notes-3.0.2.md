@@ -67,7 +67,7 @@ Due to the aforementioned issue with zPIV spending, users may find that their at
 
 2. RPC:
 
-   The RPC commands `resetspentzesatcin` and `resetmintzesatcin` are the command-line counterparts to the above, and can be used by users that do not use the GUI wallet.
+   The RPC commands `resetspentzeswyftin` and `resetmintzeswyftin` are the command-line counterparts to the above, and can be used by users that do not use the GUI wallet.
 
 RPC Changes
 ---------------------
@@ -97,7 +97,7 @@ git merge commit are mentioned.
 - #279 `e734010` Add -backupzpiv startup flag. (presstab)
 - #280 `fdc182d` [Wallet] Fix zPiv spending errors. (presstab)
 - #282 `310f216` [Wallet] Count pending zPiv balance for automint. (presstab)
-- #290 `004d7b6` Include both pending and mature zesatcins for automint calculations (presstab)
+- #290 `004d7b6` Include both pending and mature zeswyftins for automint calculations (presstab)
 
 ### GUI
 - #268 `bc63f24` [GUI/RPC] Changed bubblehelp text + RPC startmasternode help text fixed (Mrs-X)

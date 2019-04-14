@@ -3,7 +3,7 @@
 // Copyright (c) 2014-2015 The Dash developers
 // Copyright (c) 2015-2017 The PIVX developers
 // Copyright (c) 2017-2018 The XDNA Core developers
-// Copyright (c) 2018 The SatoshiCoin Core developers
+// Copyright (c) 2018-2019 The SWYFT.Network developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -55,12 +55,17 @@ static void convertSeed6(std::vector<CAddress>& vSeedsOut, const SeedSpec6* data
 //    timestamp before)
 // + Contains no strange transactions
 static Checkpoints::MapCheckpoints mapCheckpoints =
-    boost::assign::map_list_of(0, uint256("00000f921c0724d441645f9e5a248321f7b9a73a9177b5eefaedca214e75755b"));
+    boost::assign::map_list_of(0, uint256("00000f921c0724d441645f9e5a248321f7b9a73a9177b5eefaedca214e75755b"))
+                              (50000, uint256("0410772b7ffb76eea49483bb97aeab707c1f678ff97cc0a82aacd9e753f62c3a"))
+                              (50001, uint256("8e2786f447ff3a1ff8fdca9fa9c0821e62364e9a56cf2ae7593b679d5c74ca9e"))
+                              (50002, uint256("17a27ca42f0cd07f4753efbdc2830b4c7bd9651ae9ec723756faa1d3df68a68c"))
+                              (50003, uint256("d7a012bb5c759d119bc1ae130b7b7dd9eabb0a9e74d64722bc372566994ac243"))
+                              (177000, uint256("best=2651c1ca6414b0dec16d1c5fd4d8027b5a38073b37d166d47e1fbcb7c980689e"));
 
 static const Checkpoints::CCheckpointData data = {
     &mapCheckpoints,
-    1544119200, // * UNIX timestamp of last checkpoint block
-    0,      // * total number of transactions between genesis and last checkpoint
+    1555176913, // * UNIX timestamp of last checkpoint block
+    367781,      // * total number of transactions between genesis and last checkpoint
                 //   (the tx=... number in the SetBestChain debug.log lines)
     2000        // * estimated number of transactions per day after checkpoint
 };
@@ -108,7 +113,7 @@ public:
         nRejectBlockOutdatedMajority = 950;
         nToCheckBlockUpgradeMajority = 1000;
         nMinerThreads = 0;
-        nTargetSpacing = 1 * 60;  // SATC: 1 minute
+        nTargetSpacing = 1 * 60;  // SWYFT.Network: 1 minute
         nMaturity = 60;
         nMasternodeCountDrift = 3;
         nMaxMoneyOut = 35000000 * COIN;
@@ -213,7 +218,7 @@ public:
         nRejectBlockOutdatedMajority = 75;
         nToCheckBlockUpgradeMajority = 100;
         nMinerThreads = 0;
-        nTargetSpacing = 1 * 60;  // SATC: 1 minute
+        nTargetSpacing = 1 * 60;  // SWYFT.Network: 1 minute
         nLastPOWBlock = std::numeric_limits<decltype(nLastPOWBlock)>::max();
         nMaturity = 15;
         nMasternodeCountDrift = 4;
@@ -231,16 +236,16 @@ public:
 
         vFixedSeeds.clear();
         vSeeds.clear();
-        vSeeds.push_back(CDNSSeedData("satoshicoin.world", "seed01.satoshicoin.world"));     // Primary DNS Seeder
+        vSeeds.push_back(CDNSSeedData("swyft.network", "seed01.swyft.network"));     // Primary DNS Seeder
 
-        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 137); // Testnet SATC addresses start with 'x'
-        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 19);  // Testnet SATC script addresses start with '8' or '9'
+        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 137); // Testnet SWYFT.Network addresses start with 'x'
+        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 19);  // Testnet SWYFT.Network script addresses start with '8' or '9'
         base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1, 239);     // Testnet private keys start with '9' or 'c' (Bitcoin defaults)
-        // Testnet SATC BIP32 pubkeys start with 'DRKV'
+        // Testnet SWYFT.Network BIP32 pubkeys start with 'DRKV'
         base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x3a)(0x80)(0x61)(0xa0).convert_to_container<std::vector<unsigned char> >();
-        // Testnet SATC BIP32 prvkeys start with 'DRKP'
+        // Testnet SWYFT.Network BIP32 prvkeys start with 'DRKP'
         base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x3a)(0x80)(0x58)(0x37).convert_to_container<std::vector<unsigned char> >();
-        // Testnet SATC BIP44 coin type is '1' (All coin's testnet default)
+        // Testnet SWYFT.Network BIP44 coin type is '1' (All coin's testnet default)
         base58Prefixes[EXT_COIN_TYPE] = boost::assign::list_of(0x80)(0x00)(0x00)(0x01).convert_to_container<std::vector<unsigned char> >();
 
         //convertSeed6(vFixedSeeds, pnSeed6_test, ARRAYLEN(pnSeed6_test));
@@ -285,7 +290,7 @@ public:
         nRejectBlockOutdatedMajority = 950;
         nToCheckBlockUpgradeMajority = 1000;
         nMinerThreads = 1;
-        nTargetSpacing = 1 * 60;        // SATC: 1 minute
+        nTargetSpacing = 1 * 60;        // SWYFT.Network: 1 minute
         bnProofOfWorkLimit = ~uint256(0) >> 1;
         genesis.nTime = 1544119400;
         genesis.nBits = 0x207fffff;

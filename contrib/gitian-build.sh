@@ -17,7 +17,7 @@ osx=true
 SIGNER=
 VERSION=
 commit=false
-url=https://github.com/satc-core/satc
+url=https://github.com/swyft-core/swyft
 proc=2
 mem=2000
 lxc=true
@@ -31,7 +31,7 @@ commitFiles=true
 read -d '' usage <<- EOF
 Usage: $scriptName [-c|u|v|b|s|B|o|h|j|m|] signer version
 
-Run this script from the directory containing the satc, gitian-builder, gitian.sigs, and satc-detached-sigs.
+Run this script from the directory containing the swyft, gitian-builder, gitian.sigs, and swyft-detached-sigs.
 
 Arguments:
 signer          GPG signer to sign each build assert file
@@ -39,7 +39,7 @@ version		Version number, commit, or branch to build. If building a commit or bra
 
 Options:
 -c|--commit	Indicate that the version argument is for a commit or branch
--u|--url	Specify the URL of the repository. Default is https://github.com/satc-core/satc
+-u|--url	Specify the URL of the repository. Default is https://github.com/swyft-core/swyft
 -v|--verify 	Verify the gitian build
 -b|--build	Do a gitian build
 -s|--sign	Make signed binaries for Windows and Mac OSX
@@ -238,7 +238,7 @@ if [[ $setup = true ]]
 then
     sudo apt-get install ruby apache2 git apt-cacher-ng python-vm-builder qemu-kvm qemu-utils
     git clone https://github.com/SatoshiCoin/gitian.sigs.git
-    git clone https://github.com/SatoshiCoin/satc-detached-sigs.git
+    git clone https://github.com/SatoshiCoin/swyft-detached-sigs.git
     git clone https://github.com/devrandom/gitian-builder.git
     pushd ./gitian-builder
     if [[ -n "$USE_LXC" ]]
@@ -252,7 +252,7 @@ then
 fi
 
 # Set up build
-pushd ./satc
+pushd ./swyft
 git fetch
 git checkout ${COMMIT}
 popd
@@ -261,7 +261,7 @@ popd
 if [[ $build = true ]]
 then
 	# Make output folder
-	mkdir -p ./satc-binaries/${VERSION}
+	mkdir -p ./swyft-binaries/${VERSION}
 
 	# Build Dependencies
 	echo ""
@@ -271,7 +271,7 @@ then
 	mkdir -p inputs
 	wget -N -P inputs $osslPatchUrl
 	wget -N -P inputs $osslTarUrl
-	make -C ../satc/depends download SOURCES_PATH=`pwd`/cache/common
+	make -C ../swyft/depends download SOURCES_PATH=`pwd`/cache/common
 
 	# Linux
 	if [[ $linux = true ]]
@@ -279,9 +279,9 @@ then
             echo ""
 	    echo "Compiling ${VERSION} Linux"
 	    echo ""
-	    ./bin/gbuild -j ${proc} -m ${mem} --commit satc=${COMMIT} --url satc=${url} ../satc/contrib/gitian-descriptors/gitian-linux.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-linux --destination ../gitian.sigs/ ../satc/contrib/gitian-descriptors/gitian-linux.yml
-	    mv build/out/satc-*.tar.gz build/out/src/satc-*.tar.gz ../satc-binaries/${VERSION}
+	    ./bin/gbuild -j ${proc} -m ${mem} --commit swyft=${COMMIT} --url swyft=${url} ../swyft/contrib/gitian-descriptors/gitian-linux.yml
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-linux --destination ../gitian.sigs/ ../swyft/contrib/gitian-descriptors/gitian-linux.yml
+	    mv build/out/swyft-*.tar.gz build/out/src/swyft-*.tar.gz ../swyft-binaries/${VERSION}
 	fi
 	# Windows
 	if [[ $windows = true ]]
@@ -289,10 +289,10 @@ then
 	    echo ""
 	    echo "Compiling ${VERSION} Windows"
 	    echo ""
-	    ./bin/gbuild -j ${proc} -m ${mem} --commit satc=${COMMIT} --url satc=${url} ../satc/contrib/gitian-descriptors/gitian-win.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-win-unsigned --destination ../gitian.sigs/ ../satc/contrib/gitian-descriptors/gitian-win.yml
-	    mv build/out/satc-*-win-unsigned.tar.gz inputs/satc-win-unsigned.tar.gz
-	    mv build/out/satc-*.zip build/out/satc-*.exe ../satc-binaries/${VERSION}
+	    ./bin/gbuild -j ${proc} -m ${mem} --commit swyft=${COMMIT} --url swyft=${url} ../swyft/contrib/gitian-descriptors/gitian-win.yml
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-win-unsigned --destination ../gitian.sigs/ ../swyft/contrib/gitian-descriptors/gitian-win.yml
+	    mv build/out/swyft-*-win-unsigned.tar.gz inputs/swyft-win-unsigned.tar.gz
+	    mv build/out/swyft-*.zip build/out/swyft-*.exe ../swyft-binaries/${VERSION}
 	fi
 	# Mac OSX
 	if [[ $osx = true ]]
@@ -300,10 +300,10 @@ then
 	    echo ""
 	    echo "Compiling ${VERSION} Mac OSX"
 	    echo ""
-	    ./bin/gbuild -j ${proc} -m ${mem} --commit satc=${COMMIT} --url satc=${url} ../satc/contrib/gitian-descriptors/gitian-osx.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-osx-unsigned --destination ../gitian.sigs/ ../satc/contrib/gitian-descriptors/gitian-osx.yml
-	    mv build/out/satc-*-osx-unsigned.tar.gz inputs/satc-osx-unsigned.tar.gz
-	    mv build/out/satc-*.tar.gz build/out/satc-*.dmg ../satc-binaries/${VERSION}
+	    ./bin/gbuild -j ${proc} -m ${mem} --commit swyft=${COMMIT} --url swyft=${url} ../swyft/contrib/gitian-descriptors/gitian-osx.yml
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-osx-unsigned --destination ../gitian.sigs/ ../swyft/contrib/gitian-descriptors/gitian-osx.yml
+	    mv build/out/swyft-*-osx-unsigned.tar.gz inputs/swyft-osx-unsigned.tar.gz
+	    mv build/out/swyft-*.tar.gz build/out/swyft-*.dmg ../swyft-binaries/${VERSION}
 	fi
 	# AArch64
 	if [[ $aarch64 = true ]]
@@ -311,9 +311,9 @@ then
 	    echo ""
 	    echo "Compiling ${VERSION} AArch64"
 	    echo ""
-	    ./bin/gbuild -j ${proc} -m ${mem} --commit satc=${COMMIT} --url satc=${url} ../satc/contrib/gitian-descriptors/gitian-aarch64.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-aarch64 --destination ../gitian.sigs/ ../satc/contrib/gitian-descriptors/gitian-aarch64.yml
-	    mv build/out/satc-*.tar.gz build/out/src/satc-*.tar.gz ../satc-binaries/${VERSION}
+	    ./bin/gbuild -j ${proc} -m ${mem} --commit swyft=${COMMIT} --url swyft=${url} ../swyft/contrib/gitian-descriptors/gitian-aarch64.yml
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-aarch64 --destination ../gitian.sigs/ ../swyft/contrib/gitian-descriptors/gitian-aarch64.yml
+	    mv build/out/swyft-*.tar.gz build/out/src/swyft-*.tar.gz ../swyft-binaries/${VERSION}
 	popd
 
         if [[ $commitFiles = true ]]
@@ -340,32 +340,32 @@ then
 	echo ""
 	echo "Verifying v${VERSION} Linux"
 	echo ""
-	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-linux ../satc/contrib/gitian-descriptors/gitian-linux.yml
+	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-linux ../swyft/contrib/gitian-descriptors/gitian-linux.yml
 	# Windows
 	echo ""
 	echo "Verifying v${VERSION} Windows"
 	echo ""
-	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-win-unsigned ../satc/contrib/gitian-descriptors/gitian-win.yml
+	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-win-unsigned ../swyft/contrib/gitian-descriptors/gitian-win.yml
 	# Mac OSX
 	echo ""
 	echo "Verifying v${VERSION} Mac OSX"
 	echo ""
-	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-unsigned ../satc/contrib/gitian-descriptors/gitian-osx.yml
+	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-unsigned ../swyft/contrib/gitian-descriptors/gitian-osx.yml
 	# AArch64
 	echo ""
 	echo "Verifying v${VERSION} AArch64"
 	echo ""
-	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-aarch64 ../satc/contrib/gitian-descriptors/gitian-aarch64.yml
+	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-aarch64 ../swyft/contrib/gitian-descriptors/gitian-aarch64.yml
 	# Signed Windows
 	echo ""
 	echo "Verifying v${VERSION} Signed Windows"
 	echo ""
-	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-signed ../satc/contrib/gitian-descriptors/gitian-osx-signer.yml
+	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-signed ../swyft/contrib/gitian-descriptors/gitian-osx-signer.yml
 	# Signed Mac OSX
 	echo ""
 	echo "Verifying v${VERSION} Signed Mac OSX"
 	echo ""
-	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-signed ../satc/contrib/gitian-descriptors/gitian-osx-signer.yml
+	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-signed ../swyft/contrib/gitian-descriptors/gitian-osx-signer.yml
 	popd
 fi
 
@@ -380,10 +380,10 @@ then
 	    echo ""
 	    echo "Signing ${VERSION} Windows"
 	    echo ""
-	    ./bin/gbuild -i --commit signature=${COMMIT} ../satc/contrib/gitian-descriptors/gitian-win-signer.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-win-signed --destination ../gitian.sigs/ ../satc/contrib/gitian-descriptors/gitian-win-signer.yml
-	    mv build/out/satc-*win64-setup.exe ../satc-binaries/${VERSION}
-	    mv build/out/satc-*win32-setup.exe ../satc-binaries/${VERSION}
+	    ./bin/gbuild -i --commit signature=${COMMIT} ../swyft/contrib/gitian-descriptors/gitian-win-signer.yml
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-win-signed --destination ../gitian.sigs/ ../swyft/contrib/gitian-descriptors/gitian-win-signer.yml
+	    mv build/out/swyft-*win64-setup.exe ../swyft-binaries/${VERSION}
+	    mv build/out/swyft-*win32-setup.exe ../swyft-binaries/${VERSION}
 	fi
 	# Sign Mac OSX
 	if [[ $osx = true ]]
@@ -391,9 +391,9 @@ then
 	    echo ""
 	    echo "Signing ${VERSION} Mac OSX"
 	    echo ""
-	    ./bin/gbuild -i --commit signature=${COMMIT} ../satc/contrib/gitian-descriptors/gitian-osx-signer.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-osx-signed --destination ../gitian.sigs/ ../satc/contrib/gitian-descriptors/gitian-osx-signer.yml
-	    mv build/out/satc-osx-signed.dmg ../satc-binaries/${VERSION}/satc-${VERSION}-osx.dmg
+	    ./bin/gbuild -i --commit signature=${COMMIT} ../swyft/contrib/gitian-descriptors/gitian-osx-signer.yml
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-osx-signed --destination ../gitian.sigs/ ../swyft/contrib/gitian-descriptors/gitian-osx-signer.yml
+	    mv build/out/swyft-osx-signed.dmg ../swyft-binaries/${VERSION}/swyft-${VERSION}-osx.dmg
 	fi
 	popd
 

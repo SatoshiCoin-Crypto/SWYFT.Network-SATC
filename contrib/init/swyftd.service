@@ -1,0 +1,26 @@
+[Unit]
+Description=SWYFT.Network's distributed currency daemon
+After=network.target
+
+[Service]
+User=swyft
+Group=swyft
+
+Type=forking
+PIDFile=/var/lib/swyftd/swyftd.pid
+
+ExecStart=/usr/bin/swyftd -daemon -pid=/var/lib/swyftd/swyftd.pid \
+          -conf=/etc/swyft/swyft.conf -datadir=/var/lib/swyftd
+
+ExecStop=-/usr/bin/swyft-cli -conf=/etc/swyft/swyft.conf \
+         -datadir=/var/lib/swyftd stop
+
+Restart=always
+PrivateTmp=true
+TimeoutStopSec=60s
+TimeoutStartSec=2s
+StartLimitInterval=120s
+StartLimitBurst=5
+
+[Install]
+WantedBy=multi-user.target
